@@ -1,29 +1,17 @@
 
 void setup() {
-  
-// 1. Set the size of the sketch. Make it 600 pixels square. 
-  
-
+  size(600, 600);
+  noStroke();
 }
 
 void draw() {
-  
-// 2. Draw an ellipse
-// Run the program to make sure it works before moving on.
-
-
-// 3. Change the color of the ellipse when the mouse is pressed.
-//    Use the following code, but put your colors where indicated
-//    Remember to use the   fill()  command to set colors.
-
+  ellipse(300, 300, 50, 50);
 if (mousePressed) {
- 
-   //  put one color here 
-  
+  int colour = mouseX-mouseY;
+  fill(colour/3, random(1, 255), colour/3);
 } else {
-  
-   // put a different color here
-  
+  int colour = mouseX-mouseY;
+  fill(random(1, 255), colour/3, random(1, 255));
 }  
   
   
