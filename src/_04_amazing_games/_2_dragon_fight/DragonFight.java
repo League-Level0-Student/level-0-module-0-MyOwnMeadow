@@ -5,6 +5,7 @@ import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
 
 public class DragonFight {
+	Random ran = new Random();
 
 	public static void main(String[] args) {
 
@@ -12,49 +13,56 @@ public class DragonFight {
 
 		ImageIcon dragon = new ImageIcon("src/_04_amazing_games/_2_dragon_fight/dragonPicture.jpg");
 		JOptionPane.showMessageDialog(null, "Defeat the dragon to take its treasure!", "Dragon Fighter", 0, dragon);
-
-		// 1. Create some variables to hold health levels
 		
-			// playerHealth to store your health - set it equal to 100
-	
-			// dragonHealth to store the dragon's health - set it equal to 100
-
-		// 2. Create some variables to hold the attack strengths. These will be given different values later. 
+//HP values
 		
-			// playerAttack to store the damage the player's attack will do - set it equal
-			// to 0 for now.
-	
-			// dragonAttack to store the damage the dragon's attack will do - set it equal
-			// to 0 for now.
+		int dragonHP = 250;
+		int playerHP = 100;
 
+//ATK values
+		int playerATK = 0;
+		int dragonATK = 0;
 		
-		//  This while statement will cause the game attack code to repeat
+		String playerName = JOptionPane.showInputDialog("ENTER NAME OF ''HERO'' HERE:");
+
+//FIGHT BEGENS	
 		while (true) {
 
-			// THE PLAYER ATTACKS THE DRAGON
-
-				// 3. Ask the player in a pop-up if they want to attack the dragon with a yell
-				// or a kick
-	
-				// 4. If they typed in "yell":
-	
-					  // -- Find a random number between 0 and 10 and store it in playerAttack. Use
-					  // ran.nextInt(10)
+	// THE PLAYER ATTACKS THE DRAGON
+			String playerChoise = JOptionPane.showInputDialog("Do you attack with a kick or a yell?");
 			
-				// 5. If they typed in "kick":
-	
-					  // -- Find a random number between 0 and 25 and store it in playerAttack.
-		
-				// 6. Subtract the player attack value from the dragon's health
+			if (playerChoise.equalsIgnoreCase("Kick")) {
+				playerATK = ran.nextInt(25);
+				JOptionPane.showMessageDialog(null, playerName + " kicks the Dragon.\n" + "Dragon takes " + playerATK + " damege.");
+			}
+				else if (playerChoise.equals("yell")) {
+					playerATK = ran.nextInt(5);
+					JOptionPane.showMessageDialog(null, playerName + " weekly shouts at the Dragon. It dosn't seem to care that much...\n" + "Dragon takes only " + playerATK + " damege.");
+				}
+				else if (playerChoise.equals("YELL")) {
+					playerATK = ran.nextInt(50);
+					JOptionPane.showMessageDialog(null, playerName + " YELLs at the dragon with the furry of " + playerATK +",000 suns.\n" + "Dragon takes " + playerATK + " damege.");
+				}
+				else {
+					JOptionPane.showMessageDialog(null, playerName + " is completly confused.\n" + "They stand there idoly, not knowing what to do.");
+				}
+			dragonHP -= playerATK;
+			
+	// THE DRAGON RETALIATES
+			dragonATK = ran.nextInt(35);
+			playerHP -= dragonATK;
+			
+			JOptionPane.showMessageDialog(null,"The Dragon swings its talon at " + playerName + ".\n" + playerName + " takes " + dragonATK + " damege.");
 
-			// THE DRAGON RETALIATES
-
-				// 7. Find a random number between 0 and 35 and store it in dragonAttack
-	
-				// 8. Subtract the dragon attack value from the player's health
-
-			// ASSESS THE DAMAGE
-
+// ASSESS THE DAMAGE
+			if (playerHP <= 0) {
+				
+				playerLost();
+			}
+				else if (dragonHP <= 0) {
+					
+					dragonLost();
+				}
 				// 9. If the player's health is less than or equal to 0, the game is over,
 				//    call the playerLost() method
 	
@@ -77,14 +85,15 @@ public class DragonFight {
 
 	static void playerLost() {
 		// 11. Tell the player that they have been defeated by the dragon and have no treasure
-
+		JOptionPane.showMessageDialog(null, "The Dragon's swipe was fatel to the hero.\n" + "It seems as if they will never have another avencher agin...");
 
 		System.exit(0);   //This code ends the program
 	}
 
 	static void dragonLost() {
 		// 12. Tell the user that the dragon has been defeated and they get a ton of gold!
-
+		int reword = ran.nextInt(999);
+		JOptionPane.showMessageDialog(null, "The ''Hero'' slays the Dragon. After serching its den, they find a grand toltol of " + reword + " gold coins!");
 		System.exit(0);   //This code ends the program
 	}
 

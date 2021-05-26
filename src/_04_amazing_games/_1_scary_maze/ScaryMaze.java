@@ -65,14 +65,19 @@ public class ScaryMaze extends JPanel implements Runnable, MouseMotionListener {
 	}
 
 	private void scare() {
-		System.out.println("BOO!");
+		System.out.println(")9*78usfUhfUefj!!!");
 		
 		if (canPlaySounds) {
 			playScarySound("62386__fons__eng-1.wav");
 		}	
-		
 		showScaryImage("Nightmare Flower.jpg");
 	}
+	
+	
+	
+	
+	
+	
 	
 	/**********  DO NOT CHANGE THE CODE BELOW THIS LINE ***************/
 	
@@ -86,7 +91,7 @@ public class ScaryMaze extends JPanel implements Runnable, MouseMotionListener {
 				Thread.sleep(clip.getMicrosecondLength()/1000);
 			}
 			catch (Exception e) {
-				System.out.println("Could not play this sound");
+				System.out.println("Could not play this sound "+ e.getMessage());
 			}
  		}
 		else {
