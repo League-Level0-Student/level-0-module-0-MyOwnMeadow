@@ -5,7 +5,6 @@ import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
 
 public class DragonFight {
-	Random ran = new Random();
 
 	public static void main(String[] args) {
 
@@ -16,7 +15,7 @@ public class DragonFight {
 		
 //HP values
 		
-		int dragonHP = 250;
+		int dragonHP = 200;
 		int playerHP = 100;
 
 //ATK values
@@ -32,19 +31,19 @@ public class DragonFight {
 			String playerChoise = JOptionPane.showInputDialog("Do you attack with a kick or a yell?");
 			
 			if (playerChoise.equalsIgnoreCase("Kick")) {
-				playerATK = ran.nextInt(25);
+				playerATK = ran.nextInt(25);			//Damage
 				JOptionPane.showMessageDialog(null, playerName + " kicks the Dragon.\n" + "Dragon takes " + playerATK + " damege.");
 			}
 				else if (playerChoise.equals("yell")) {
-					playerATK = ran.nextInt(5);
-					JOptionPane.showMessageDialog(null, playerName + " weekly shouts at the Dragon. It dosn't seem to care that much...\n" + "Dragon takes only " + playerATK + " damege.");
+					playerATK = ran.nextInt(5);			//Damage
+					JOptionPane.showMessageDialog(null, playerName + " weekly shouts at the Dragon. It dosn't seem to care that much...\n" + "DRAGON ONLY TAKES " + playerATK + " DAMEGE.\n" + "[Tip: You yelled to weekly]");
 				}
 				else if (playerChoise.equals("YELL")) {
-					playerATK = ran.nextInt(50);
-					JOptionPane.showMessageDialog(null, playerName + " YELLs at the dragon with the furry of " + playerATK +",000 suns.\n" + "Dragon takes " + playerATK + " damege.");
+					playerATK = ran.nextInt(100);		//Damage
+					JOptionPane.showMessageDialog(null, playerName + " YELLs at the dragon with the furry of " + playerATK +",000 suns.\n" + "DRAGON TAKES " + playerATK + " DAMEGE.");
 				}
 				else {
-					JOptionPane.showMessageDialog(null, playerName + " is completly confused.\n" + "They stand there idoly, not knowing what to do.");
+					JOptionPane.showMessageDialog(null, playerName + " is completly confused.\n" + "They stand there idoly, not knowing what to do.\n" + "[Tip: Check your spelling; sometimes capatilization maters to]");
 				}
 			dragonHP -= playerATK;
 			
@@ -52,7 +51,7 @@ public class DragonFight {
 			dragonATK = ran.nextInt(35);
 			playerHP -= dragonATK;
 			
-			JOptionPane.showMessageDialog(null,"The Dragon swings its talon at " + playerName + ".\n" + playerName + " takes " + dragonATK + " damege.");
+			JOptionPane.showMessageDialog(null,"The Dragon swings its talon at " + playerName + ".\n" + playerName + " TAKES " + dragonATK + " DAMEGE.");
 
 // ASSESS THE DAMAGE
 			if (playerHP <= 0) {
@@ -63,21 +62,7 @@ public class DragonFight {
 					
 					dragonLost();
 				}
-				// 9. If the player's health is less than or equal to 0, the game is over,
-				//    call the playerLost() method
-	
-			
-				// 10. If the dragon's health is less than or equal to 0, the game is over,
-				//     call the dragonLost() method
-
-			
-				// 11.  Pop up a message that tells us how much health the player and
-				// 		dragon have left.
-
-			
-			// (Bonus: Also display the amount of health that was lost by each in this
-			// round)
-			
+			JOptionPane.showMessageDialog(null, "The battle contiuns; both " + playerName + " and the Dragon are deturmened for difrent resons...\n" + "DRAGON'S HELTH: " + dragonHP + "\n" + playerName + "'S HELTH: " + playerHP);
 
 		} // this is the end of the while loop
 
@@ -92,8 +77,7 @@ public class DragonFight {
 
 	static void dragonLost() {
 		// 12. Tell the user that the dragon has been defeated and they get a ton of gold!
-		int reword = ran.nextInt(999);
-		JOptionPane.showMessageDialog(null, "The ''Hero'' slays the Dragon. After serching its den, they find a grand toltol of " + reword + " gold coins!");
+		JOptionPane.showMessageDialog(null, "The ''Hero'' slays the Dragon. After serching its den, they find a grand toltol of 100,000 gold coins!\n" + "They also found a nest of 5 eggs. Now they have some brekfest...");
 		System.exit(0);   //This code ends the program
 	}
 
